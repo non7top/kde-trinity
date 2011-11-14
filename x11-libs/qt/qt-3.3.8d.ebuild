@@ -12,7 +12,7 @@ HOMEPAGE="http://qt.nokia.com/"
 
 IMMQT_P="qt-x11-immodule-unified-qt3.3.8-20070321-gentoo"
 
-SRC_URI="ftp://ftp.trolltech.com/qt/source/qt-x11-${SRCTYPE}-${PV}.tar.gz
+SRC_URI="mirror://trinity/3.5.13/dependencies/qt3-3.3.8.d.tar.gz
 	immqt? ( mirror://gentoo/${IMMQT_P}.diff.bz2 )
 	immqt-bc? ( mirror://gentoo/${IMMQT_P}.diff.bz2 )"
 LICENSE="|| ( QPL-1.0 GPL-2 GPL-3 )"
@@ -47,7 +47,8 @@ DEPEND="${RDEPEND}
 	immqt-bc? ( x11-proto/xineramaproto )"
 PDEPEND="odbc? ( ~dev-db/qt-unixODBC-$PV )"
 
-S="${WORKDIR}/qt-x11-${SRCTYPE}-${PV}"
+#S="${WORKDIR}/qt-x11-${SRCTYPE}-${PV}"
+S="${WORKDIR}/qt3"
 
 QTBASE="/usr/qt/3"
 
@@ -108,34 +109,34 @@ src_unpack() {
 		sed -i -e 's:QMAKE_RPATH.*:QMAKE_RPATH =:'
 
 	# Patch for uic includehint errors (aseigo patch)
-	epatch "${FILESDIR}"/qt-3.3.8-uic-fix.patch
+#	epatch "${FILESDIR}"/qt-3.3.8-uic-fix.patch
 
 	# KDE related patches
-	epatch "${FILESDIR}"/0001-dnd_optimization.patch
-	epatch "${FILESDIR}"/0002-dnd_active_window_fix.patch
-	epatch "${FILESDIR}"/0038-dragobject-dont-prefer-unknown.patch
-	epatch "${FILESDIR}"/0044-qscrollview-windowactivate-fix.diff
-	epatch "${FILESDIR}"/0047-fix-kmenu-widget.diff
-	epatch "${FILESDIR}"/0048-qclipboard_hack_80072.patch
+#	epatch "${FILESDIR}"/0001-dnd_optimization.patch
+#	epatch "${FILESDIR}"/0002-dnd_active_window_fix.patch
+#	epatch "${FILESDIR}"/0038-dragobject-dont-prefer-unknown.patch
+#	epatch "${FILESDIR}"/0044-qscrollview-windowactivate-fix.diff
+#	epatch "${FILESDIR}"/0047-fix-kmenu-widget.diff
+#	epatch "${FILESDIR}"/0048-qclipboard_hack_80072.patch
 
 	# ulibc patch (bug #100246)
 	epatch "${FILESDIR}"/qt-ulibc.patch
 
 	# xinerama patch: http://ktown.kde.org/~seli/xinerama/
-	epatch "${FILESDIR}"/qt-3.3.8-seli-xinerama.patch
+#	epatch "${FILESDIR}"/qt-3.3.8-seli-xinerama.patch
 
 	# Visibility patch, apply only on GCC 4.1 and later for safety
 	# [[ $(gcc-major-version)$(gcc-minor-version) -ge 41 ]] && \
 		epatch "${FILESDIR}"/qt-3.3.8-visibility.patch
 
 	# Fix configure to correctly pick up gcc version, bug 244732
-	epatch "${FILESDIR}"/qt-3.3.8-fix-compiler-detection.patch
+#	epatch "${FILESDIR}"/qt-3.3.8-fix-compiler-detection.patch
 
 	# Fix CJK script rendering, bug 229567
-	epatch "${FILESDIR}"/qt-3.3.8b-cjk-fix.patch
+#	epatch "${FILESDIR}"/qt-3.3.8b-cjk-fix.patch
 
 	# Fix libpng-1.4 issues
-	epatch "${FILESDIR}"/qt-3.3.8-libpng14.patch
+#	epatch "${FILESDIR}"/qt-3.3.8-libpng14.patch
 
 	if use immqt || use immqt-bc ; then
 		epatch ../${IMMQT_P}.diff
@@ -149,7 +150,7 @@ src_unpack() {
 	fi
 
 	# Add compatibility functions for the TQt interface
-	epatch "${FILESDIR}"/qt3_3.3.8c.diff
+#	epatch "${FILESDIR}"/qt3_3.3.8c.diff
 
 	# known working flags wrt #77623
 	use sparc && export CFLAGS="-O1" && export CXXFLAGS="${CFLAGS}"
@@ -215,7 +216,7 @@ src_compile() {
 
 	./configure -sm -thread -stl -system-libjpeg -verbose -largefile \
 		-qt-imgfmt-{jpeg,mng,png} -tablet -system-libmng \
-		-system-libpng -xft -platform ${PLATFORM} -xplatform \
+		-qt-libpng -xft -platform ${PLATFORM} -xplatform \
 		${PLATFORM} -xrender -prefix ${QTBASE} -libdir ${QTBASE}/$(get_libdir) \
 		-fast -no-sql-odbc ${myconf} -dlopen-opengl || die
 
@@ -252,7 +253,7 @@ src_install() {
 	# libraries
 	dolib.so lib/lib{editor,qassistantclient,designercore}.a
 	dolib.so lib/libqt-mt.la
-	dolib.so lib/libqt-mt.so.${PV/b} lib/libqui.so.1.0.0
+	dolib.so lib/libqt-mt.so.${PV/d} lib/libqui.so.1.0.0
 	cd "${D}"/${QTBASE}/$(get_libdir)
 
 	for x in libqui.so ; do
@@ -262,12 +263,12 @@ src_install() {
 	done
 
 	# version symlinks - 3.3.5->3.3->3->.so
-	ln -s libqt-mt.so.${PV/b} libqt-mt.so.3.3
+	ln -s libqt-mt.so.${PV/d} libqt-mt.so.3.3
 	ln -s libqt-mt.so.3.3 libqt-mt.so.3
 	ln -s libqt-mt.so.3 libqt-mt.so
 
 	# libqt -> libqt-mt symlinks
-	ln -s libqt-mt.so.${PV/b} libqt.so.${PV/b}
+	ln -s libqt-mt.so.${PV/d} libqt.so.${PV/d}
 	ln -s libqt-mt.so.3.3 libqt.so.3.3
 	ln -s libqt-mt.so.3 libqt.so.3
 	ln -s libqt-mt.so libqt.so

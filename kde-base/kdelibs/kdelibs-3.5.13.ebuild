@@ -8,7 +8,7 @@ set-kdedir 3.5
 
 DESCRIPTION="KDE libraries needed by all KDE programs."
 HOMEPAGE="http://trinity.pearsoncomputing.net/"
-SRC_URI="http://www.thel.ro/distfiles/${P}.tar.bz2"
+SRC_URI="mirror://trinity/${PV}/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="~x86"
 IUSE="alsa arts avahi cups jpeg2k openexr spell tiff lua"
