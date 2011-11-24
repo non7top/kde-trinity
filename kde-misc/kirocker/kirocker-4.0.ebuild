@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2 or later
 # $Header: $
 
+EAPI=2
 inherit kde versionator
 
 DESCRIPTION="Make your Kicker (the KDE main panel) rock with your music."
@@ -14,8 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND="<=media-sound/amarok-2"
+DEPEND="media-sound/amarok:3.5"
+RDEPEND=""
 
 need-kde 3.2
 
