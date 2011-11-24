@@ -8,7 +8,7 @@ set-kdedir 3.5
 
 DESCRIPTION="Icons, localization data and .desktop files from kdebase. Includes l10n, pics and applnk subdirs."
 HOMEPAGE="http://trinity.pearsoncomputing.net/"
-SRC_URI="http://www.thel.ro/distfiles/kdebase-3.5.13_p1183307.tar.bz2"
+SRC_URI="mirror://trinity/${PV}/kdebase-${PV}.tar.gz"
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="~x86"
 IUSE=""
