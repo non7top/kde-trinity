@@ -8,7 +8,7 @@ set-kdedir 3.5
 
 DESCRIPTION="aRts, the KDE sound (and all-around multimedia) server/output manager"
 HOMEPAGE="http://trinity.pearsoncomputing.net/"
-SRC_URI="http://www.thel.ro/distfiles/${P}.tar.bz2"
+SRC_URI="mirror://trinity/${PV}/dependencies/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="~x86"
 IUSE="alsa esd artswrappersuid jack mp3 nas vorbis"
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
     dev-util/cmake
     dev-util/pkgconfig"
 
-S=${WORKDIR}/${PN}
+S=${WORKDIR}/dependencies/${PN}
 
 src_configure() {
 	mycmakeargs=(
