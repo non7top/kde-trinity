@@ -8,7 +8,7 @@ set-kdedir 3.5
 
 DESCRIPTION="Advanced audio player based on KDE framework."
 HOMEPAGE="http://amarok.kde.org/"
-SRC_URI="http://www.thel.ro/distfiles/${P}.tar.bz2"
+SRC_URI="mirror://trinity/${PV}/applications/${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~x86"
 IUSE="+xine yauap ipod ifp njb mtp riokarma daap konqsidebar translations visualization doc"
@@ -31,12 +31,20 @@ DEPEND="${RDEPEND}
     dev-util/cmake
     dev-util/pkgconfig"
 
-S=${WORKDIR}/${PN}
+S=${WORKDIR}/applications/${PN}
 
 src_configure() {
+	export PATH=/usr/kde/3.5/bin:$PATH
+	export QTDIR=/usr/qt/3
+	export KDEDIR=/usr/kde/3.5
 	mycmakeargs=(
+		-DCMAKE_VERBOSE_MAKEFILE=OFF
+		-DUSE_QT3=1
+		-DBUILD_ALL=ON
+		-DCMAKE_SKIP_RPATH=OFF
 		-DCMAKE_INSTALL_RPATH=/usr/kde/3.5/lib
 		-DWITH_XINE=ON
+		-DQT_LIBRARY_DIRS=/usr/lib
 		$(cmake-utils_use_with yauap YAUAP)
 		$(cmake-utils_use_with konqsidebar KONQSIDEBAR)
 		$(cmake-utils_use_with visualization LIBVISUAL)
