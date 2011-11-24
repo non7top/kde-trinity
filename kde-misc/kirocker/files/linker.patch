@@ -1,0 +1,13 @@
+diff --git a/src/Makefile.in b/src/Makefile.in
+index bf04ec5..4878c6f 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -408,7 +408,7 @@ noinst_HEADERS = amarokapi.h applet.h coverdisplay.h dcopinterface.h \
+ #>- kirocker_SOURCES = settings.kcfgc kickertipfake.cpp main.cpp
+ #>+ 1
+ kirocker_SOURCES= kickertipfake.cpp main.cpp settings.cpp
+-kirocker_LDFLAGS = $(all_libraries)  $(LIB_KDEUI) -lkio -lDCOP
++kirocker_LDFLAGS = $(all_libraries)  $(LIB_KDEUI) $(LIB_KDECORE) -lkio -lDCOP
+ kirocker_LDADD = kirocker_panelapplet.la $(LIB_XTEST)
+ kirockerdir = $(kde_bindir)
+ shelldesktopdir = $(kde_appsdir)/Multimedia

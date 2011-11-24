@@ -1,0 +1,18 @@
+# ChangeLog for kde-misc/kirocker
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*kirocker-4.0 (24 Nov 2011)
+
+  24 Nov 2011; Vladimir Berezhnoy <non7top@gmail.com> +kirocker-4.0.ebuild,
+  +files/kirocker-4.0-desktop.patch, +files/linker.patch, +files/trinity.patch:
+  Port to trinity
+
+  21 Oct 2008; Vladimir V. Berezhnoy <non7top@gmail.com>
+  kirocker-4.0.ebuild:
+  Fix PREFIX
+
+  19 Oct 2008; Vladimir V. Berezhnoy <non7top@gmail.com>
+  kirocker-4.0.ebuild:
+  Fix slotted dep
+

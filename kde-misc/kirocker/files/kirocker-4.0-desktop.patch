@@ -1,0 +1,53 @@
+diff -aur kirocker-4.0/file-integration/x-kirocker-theme.desktop kirocker-4.0new/file-integration/x-kirocker-theme.desktop
+--- kirocker-4.0/file-integration/x-kirocker-theme.desktop	2008-01-06 00:11:55.000000000 +0300
++++ kirocker-4.0new/file-integration/x-kirocker-theme.desktop	2008-01-06 00:08:54.000000000 +0300
+@@ -1,10 +1,11 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+ Type=MimeType
+-MimeType=application/x-kirocker-theme
++MimeType=application/x-kirocker-theme;
+ Patterns=*.kirocker-theme.tar.gz
+ Icon=kirockertheme
+ DefaultApp=kirocker
+ Comment=Theme for Kirocker Music Display
++Comment[ru]=Тема для Kirocker Music Display
+ Comment[fr]=Thème pour Afficheur de musique Kirocker
+ X-KDE-AutoEmbed=false
+diff -aur kirocker-4.0/src/kirocker-applet.desktop kirocker-4.0new/src/kirocker-applet.desktop
+--- kirocker-4.0/src/kirocker-applet.desktop	2007-11-19 13:53:01.000000000 +0300
++++ kirocker-4.0new/src/kirocker-applet.desktop	2008-01-06 00:09:29.000000000 +0300
+@@ -3,10 +3,12 @@
+ 
+ Comment=Display cover and information about the currently played music
+ Comment[fr]=Affiche la pochette et les informations sur la musique en cours de lecture
++Comment[ru]=Показывает обложку и информацию о проигрываемой композиции
+ Comment[xx]=xxDisplay cover and information about the currently played musicxx
+ 
+ Name=Kirocker Music Display
+ Name[fr]=Afficheur de musique Kirocker
++Name[ru]=Kirocker Music Display
+ Name[xx]=xxKirocker Music Displayxx
+ 
+ Icon=kirocker
+diff -aur kirocker-4.0/src/kirocker.desktop kirocker-4.0new/src/kirocker.desktop
+--- kirocker-4.0/src/kirocker.desktop	2007-11-19 13:54:03.000000000 +0300
++++ kirocker-4.0new/src/kirocker.desktop	2008-01-06 00:09:49.000000000 +0300
+@@ -3,14 +3,16 @@
+ Type=Application
+ 
+ Exec=kirocker %f
+-MimeType=application/x-kirocker-theme
++MimeType=application/x-kirocker-theme;
+ Icon=kirocker
+ StartupNotify=false
+ 
+ Name=Kirocker Music Display
+ Name[fr]=Afficheur de musique Kirocker
++Name[ru]=Kirocker Music Display
+ Name[xx]=xxKirocker Music Displayxx
+ 
+ Comment=Display cover and information about the currently played music
+ Comment[fr]=Affiche la pochette et les informations sur la musique en cours de lecture
++Comment[ru]=Показывает обложку и информацию о проигрываемой композиции
+ Comment[xx]=xxDisplay cover and information about the currently played musicxx
